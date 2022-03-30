@@ -19,6 +19,7 @@ export default {
   },
   props: {
     arrFilms: Array,
+    arrSeries: Array,
   },
 };
 </script>
