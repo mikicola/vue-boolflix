@@ -2,14 +2,14 @@
   <header>
     <div class="container flex">
       <h1>boolflix</h1>
-      <form>
+      <form @submit.prevent="$emit('search', userResearch)"> <!-- @submit.prevent evita refresh pagina -->
         <input
           type="text"
           placeholder="cerca film o serie tv"
           name="search"
           v-model="userResearch"
         />
-        <button @click="$emit('search', userResearch)">cerca</button>
+        <button>cerca</button>
       </form>
     </div>
   </header>
@@ -20,7 +20,7 @@ export default {
   name: "HeaderBoolflix",
   data() {
     return {
-      userResearch: "",
+      userResearch: '',
     };
   },
 };
