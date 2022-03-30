@@ -1,28 +1,39 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <HeaderBoolflix />
+    <MainBoolflix />
+
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// 63aa7c2cb6c1863a7e65fcebb3851670 chaive api
+// https://api.themoviedb.org/3/movie/550?api_key=63aa7c2cb6c1863a7e65fcebb3851670 
+
+// import axios from 'axios'
+import HeaderBoolflix from './components/HeaderBoolflix.vue'
+import MainBoolflix from './components/MainBoolflix.vue'
+
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    HeaderBoolflix,
+    MainBoolflix,
+  },
+  data(){
+    return{
+      language: 'it-IT',
+      arrFilms: [],
+    }
   }
 }
+
 </script>
 
 <style lang="scss">
+@import "./assets/styles/style.scss";
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
