@@ -37,10 +37,12 @@ export default {
       
       if (userResearch !== ''){ 
         const objParams = {
-           api_key: this.keyApi,
+          api_key: this.keyApi,
           language: 'it-IT',
           query: userResearch,
         };
+
+        /*
         // ricerca film 
         axios(`${this.urlApi}/search/movie`, {
         params:{
@@ -51,7 +53,10 @@ export default {
       })
         // .then((response) => console.log(response));
         .then((response) => {this.arrFilms = response.data.results;}); //metto risultati dall'api nell'array
-
+        */
+       
+        // ricerca film
+        this.axiosCall( 'movie', objParams, this.arrFilms);
         // ricerca serie
         this.axiosCall( 'tv', objParams, this.arrSeries);
         
@@ -61,15 +66,10 @@ export default {
     // eslint-disable-next-line no-unused-vars
     axiosCall(type, objParams, destination){
         axios(`${this.urlApi}/search/${type}`, {
-        params:{
-          api_key: this.keyApi,
-          language: 'it-IT',
-          // eslint-disable-next-line no-undef
-          query: userResearch,
-        },
+        params: objParams,
       })
       .then((response) => {
-        if(type === 'film'){
+        if(type === 'movie'){
           // se il type è film prendi questi dati dall'api 
           this.arrFilms = response.data.results.map((film) => ({
             id: film.id ,
